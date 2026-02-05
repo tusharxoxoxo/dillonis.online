@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import { type Snippet } from 'svelte';
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 	import '../app.css';
 	import {
@@ -254,7 +254,7 @@
 		});
 	}
 
-	injectAnalytics();
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 	injectSpeedInsights();
 </script>
 
