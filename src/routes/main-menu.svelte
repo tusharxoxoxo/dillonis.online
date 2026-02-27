@@ -39,7 +39,7 @@
 			<a
 				id="github"
 				class="flex group/link flex-row h-full w-full p-2 focus:outline-none focus:bg-[#313346] gap-2 items-center justify-between hover:bg-[#313346]"
-				href="https://github.com/tusharxoxoxo"
+				href="https://github.com/westdelhi"
 				target="_blank"
 			>
 				<span class="flex flex-row gap-4 items-center"
