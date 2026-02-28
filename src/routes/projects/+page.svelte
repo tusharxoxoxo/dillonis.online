@@ -21,7 +21,7 @@
 			description:
 				'A high-performance OLTP database written in OCaml, inspired by TigerBeetle',
 			language: 'OCaml',
-			links: [{ label: 'GitHub', url: 'https://github.com/westdelhi/6666' }]
+			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/6666' }]
 		}
 	];
 
