@@ -82,7 +82,7 @@
 
 			const shortcuts: Record<string, string> = {
 				ggh: 'https://github.com/westdelhi',
-				gx: 'https://x.com/0tusharD',
+				gx: 'https://x.com/tusharhq',
 				gb: 'https://tushard.bearblog.dev/blog/',
 				gyt: 'https://www.youtube.com/@bobo5',
 				gli: 'https://www.linkedin.com/in/dahiya-tushar/',
