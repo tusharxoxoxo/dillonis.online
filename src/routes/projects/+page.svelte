@@ -22,6 +22,13 @@
 				'A high-performance OLTP database written in OCaml, inspired by TigerBeetle',
 			language: 'OCaml',
 			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/6666' }]
+		},
+		{
+			name: 'rope-man',
+			description:
+				'A terminal reimplementation of Armin Ronacher\'s rope-man game (made with his kids), built with OpenTUI',
+			language: 'TypeScript',
+			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/rope-man' }]
 		}
 	];
 
