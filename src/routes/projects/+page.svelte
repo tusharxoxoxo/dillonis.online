@@ -40,6 +40,34 @@
 					url: 'https://github.com/tusharhqq/automatic-disco-go-interpreter'
 				}
 			]
+		},
+		{
+			name: '1millionspheres',
+			description:
+				'PBR Three.js visualization rendering 1,000,000 unique spheres with dynamic lighting and selection',
+			language: 'TypeScript',
+			links: [
+				{
+					label: 'GitHub',
+					url: 'https://github.com/tusharhqq/1millionspheres'
+				},
+				{
+					label: 'Demo',
+					url: 'https://three-ezinstancedmesh2-dynamic-bvh-cmdalhx5.stackblitz.io'
+				}
+			]
+		},
+		{
+			name: 'rust-market-maker',
+			description:
+				'Market-maker simulation using Binance, Jupiter, and Cow price sources with spread and PnL modeling',
+			language: 'Rust',
+			links: [
+				{
+					label: 'GitHub',
+					url: 'https://github.com/tusharhqq/rust-market-maker'
+				}
+			]
 		}
 	];
 
