@@ -28,7 +28,7 @@
 		{
 			name: 'openchaos',
 			description:
-				'Open-source deterministic simulation and property-based testing - exhaustively explore your system in simulation, inject faults, and get a perfect repro of every failure',
+				'Open-source deterministic simulation and property-based testing — exhaustively explore your system in simulation, inject faults, and get a perfect repro of every failure',
 			language: 'Open Source',
 			links: [
 				{ label: 'GitHub', url: 'https://github.com/tusharhqq/openchaos' }
@@ -137,94 +137,106 @@
 </script>
 
 <main
-	class="flex flex-col mx-auto mt-12 text-ctp-text font-mono w-3/4 max-w-4xl"
+	class="mx-auto flex w-full max-w-2xl flex-col px-5 py-10 font-mono text-ctp-text sm:px-8 lg:py-14"
 >
-	<!-- Header section -->
-	<div class="flex flex-col gap-3 mb-8 items-center">
-		<div class="text-ctp-crust bg-mode-color px-3 py-1 text-lg">
-			projects.md
-		</div>
+	<header class="mb-10 border-b border-ctp-surface0 pb-8">
 		<a
 			href="/"
-			class="text-ctp-blue hover:text-mode-color hover:bg-[#313346] px-2 py-0.5 transition-colors"
+			class="text-sm text-ctp-blue transition-colors hover:text-mode-color"
 		>
-			← :bprev
+			← home
 		</a>
-	</div>
+		<h1 class="mt-5 text-2xl font-semibold tracking-tight text-ctp-text lg:text-3xl">
+			Projects
+		</h1>
+		<p class="mt-3 max-w-prose text-base leading-relaxed text-ctp-subtext1">
+			Open source work — simulation, games, demos, and infrastructure.
+		</p>
+	</header>
 
-	<!-- Projects -->
-	<div class="flex flex-col gap-4 mb-12">
-		<div class="text-ctp-peach font-bold text-lg mb-2">
-			" === Open Source Projects ===
-		</div>
-		<div class="flex flex-col gap-3">
+	<section aria-label="Open source projects">
+		<h2
+			class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-ctp-overlay0"
+		>
+			Assorted projects
+		</h2>
+
+		<ul class="divide-y divide-ctp-surface0 border-y border-ctp-surface0">
 			{#each projects as project, i}
 				{@const isSelected = selectedIndex === i}
-				<div
+				<li
 					id="project-row-{i}"
-					class="group hover:bg-[#313346] transition-colors px-3 py-3 cursor-pointer {isSelected
-						? 'bg-[#313346]'
-						: ''}"
-					onclick={() => {
-						selectedIndex = i;
-					}}
-					onkeydown={(event) => {
-						if (event.key === 'Enter' || event.key === ' ') {
-							event.preventDefault();
-							selectedIndex = i;
-						}
-					}}
-					role="button"
-					tabindex={i}
+					class="group relative transition-colors {isSelected
+						? 'bg-ctp-surface0/60'
+						: 'hover:bg-ctp-surface0/30'}"
 				>
-					<div class="flex flex-row items-start gap-3">
-						<span class="text-ctp-overlay0 shrink-0 select-none">{i + 1}.</span>
-						<div class="flex flex-col gap-1.5 grow min-w-0">
-							<div class="flex flex-row items-baseline gap-2 flex-wrap">
-								<span class="text-ctp-text font-semibold">{project.name}</span>
+					<div
+						role="button"
+						tabindex="0"
+						class="flex w-full cursor-pointer flex-col gap-2 px-1 py-5 text-left sm:px-2 {isSelected
+							? 'border-l-2 border-mode-color pl-3 sm:pl-4'
+							: 'border-l-2 border-transparent pl-3 sm:pl-4'}"
+						onclick={() => {
+							selectedIndex = i;
+						}}
+						onkeydown={(event) => {
+							if (event.key === 'Enter' || event.key === ' ') {
+								event.preventDefault();
+								selectedIndex = i;
+							}
+						}}
+					>
+						<div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+							<div class="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+								<span class="text-lg font-semibold text-ctp-text">{project.name}</span>
 								<span
-									class="text-ctp-subtext0 text-sm px-1.5 py-0.5 bg-ctp-surface0 rounded"
-									>{project.language}</span
+									class="text-[0.65rem] font-semibold uppercase tracking-wider text-ctp-overlay0"
 								>
-								{#if project.stars}
-									<span class="text-ctp-yellow text-sm flex items-center gap-1">
-										<StarIcon size={12} />
-										{project.stars}
-									</span>
-								{/if}
+									{project.language}
+								</span>
 							</div>
-							<div class="text-sm text-ctp-subtext1 mt-0.5">
-								{project.description}
-							</div>
-							<div class="flex flex-row gap-2 mt-1.5 text-sm flex-wrap">
-								{#each project.links as link, linkIndex}
-									<a
-										href={link.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="text-ctp-blue hover:text-mode-color hover:underline flex items-center gap-1"
-									>
-										{#if link.label === 'GitHub'}
-											<GithubIcon size={12} />
-										{:else}
-											<ExternalLinkIcon size={12} />
-										{/if}
-										{link.label}
-									</a>
-									{#if linkIndex < project.links.length - 1}
-										<span class="text-ctp-overlay0">|</span>
+							{#if project.stars}
+								<span
+									class="flex shrink-0 items-center gap-1 text-sm tabular-nums text-ctp-yellow"
+								>
+									<StarIcon size={12} />
+									{project.stars}
+								</span>
+							{/if}
+						</div>
+
+						<p class="max-w-prose text-sm leading-relaxed text-ctp-subtext1">
+							{project.description}
+						</p>
+
+						<div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+							{#each project.links as link, linkIndex}
+								<a
+									href={link.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-1 text-ctp-blue transition-colors hover:text-mode-color hover:underline"
+									onclick={(event) => event.stopPropagation()}
+								>
+									{#if link.label === 'GitHub'}
+										<GithubIcon size={12} />
+									{:else}
+										<ExternalLinkIcon size={12} />
 									{/if}
-								{/each}
-							</div>
+									{link.label}
+								</a>
+								{#if linkIndex < project.links.length - 1}
+									<span class="text-ctp-surface2" aria-hidden="true">·</span>
+								{/if}
+							{/each}
 						</div>
 					</div>
-				</div>
+				</li>
 			{/each}
-		</div>
-	</div>
+		</ul>
+	</section>
 
-	<!-- Help text -->
-	<div class="text-ctp-overlay0 text-xs mb-12">
-		" Navigation: j/k (down/up), gg (top), G (bottom), Enter/o (open first link)
-	</div>
+	<p class="mt-8 text-xs text-ctp-overlay0">
+		j/k navigate · Enter open link · gg top · G bottom
+	</p>
 </main>
