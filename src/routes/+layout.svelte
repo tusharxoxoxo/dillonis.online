@@ -259,7 +259,7 @@
 </script>
 
 <div
-	class="w-screen h-screen bg-ctp-base flex flex-col text-ctp-subtext0 justify-between overflow-auto"
+	class="w-screen h-screen scroll-smooth scroll-pt-4 scroll-pb-4 bg-ctp-base flex flex-col text-ctp-subtext0 justify-between overflow-auto"
 >
 	<div class="flex flex-row sm:gap-4 grow">
 		<SignColumn />

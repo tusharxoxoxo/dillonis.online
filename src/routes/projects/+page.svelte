@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { ExternalLinkIcon, GithubIcon, StarIcon } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 
@@ -16,6 +17,13 @@
 	let selectedIndex = $state(0);
 	let skipScroll = true;
 
+	function scrollBehavior(): ScrollBehavior {
+		if (!browser) return 'auto';
+		return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+			? 'auto'
+			: 'smooth';
+	}
+
 	$effect(() => {
 		const index = selectedIndex;
 		if (skipScroll) {
@@ -24,23 +32,9 @@
 		}
 
 		requestAnimationFrame(() => {
-			if (index === 0) {
-				document
-					.getElementById('projects-top')
-					?.scrollIntoView({ block: 'start' });
-				return;
-			}
-
-			if (index === projects.length - 1) {
-				document
-					.getElementById('status-line')
-					?.scrollIntoView({ block: 'end' });
-				return;
-			}
-
 			document
 				.getElementById(`project-row-${index}`)
-				?.scrollIntoView({ block: 'nearest' });
+				?.scrollIntoView({ block: 'nearest', behavior: scrollBehavior() });
 		});
 	});
 
@@ -175,7 +169,7 @@
 				{@const isSelected = selectedIndex === i}
 				<li
 					id="project-row-{i}"
-					class="group relative transition-colors {isSelected
+					class="group relative scroll-mt-4 scroll-mb-4 transition-colors {isSelected
 						? 'bg-ctp-surface0/60'
 						: 'hover:bg-ctp-surface0/30'}"
 				>
