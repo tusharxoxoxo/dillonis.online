@@ -14,10 +14,23 @@
 	};
 
 	let selectedIndex = $state(0);
+	let skipScroll = true;
 
 	$effect(() => {
 		const index = selectedIndex;
+		if (skipScroll) {
+			skipScroll = false;
+			return;
+		}
+
 		requestAnimationFrame(() => {
+			if (index === 0) {
+				document
+					.getElementById('projects-top')
+					?.scrollIntoView({ block: 'start' });
+				return;
+			}
+
 			document
 				.getElementById(`project-row-${index}`)
 				?.scrollIntoView({ block: 'nearest' });
@@ -79,17 +92,6 @@
 			]
 		},
 		{
-			name: 'config',
-			description: 'My configuration files and tools',
-			language: 'Lua',
-			links: [
-				{
-					label: 'GitHub',
-					url: 'https://github.com/tusharhqq/config'
-				}
-			]
-		},
-		{
 			name: '6666',
 			description:
 				'High-performance OLTP database in OCaml, inspired by TigerBeetle',
@@ -139,7 +141,7 @@
 <main
 	class="mx-auto flex w-full max-w-2xl flex-col px-5 py-10 font-mono text-ctp-text sm:px-8 lg:py-14"
 >
-	<header class="mb-10 border-b border-ctp-surface0 pb-8">
+	<header id="projects-top" class="mb-10 border-b border-ctp-surface0 pb-8">
 		<a
 			href="/"
 			class="text-sm text-ctp-blue transition-colors hover:text-mode-color"
