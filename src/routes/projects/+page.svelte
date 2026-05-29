@@ -26,9 +26,20 @@
 		{
 			name: 'rope-man',
 			description:
-				'A terminal reimplementation of Armin Ronacher\'s rope-man game (made with his kids), built with OpenTUI',
+				"A terminal reimplementation of Armin Ronacher's rope-man game (made with his kids), built with OpenTUI",
 			language: 'TypeScript',
 			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/rope-man' }]
+		},
+		{
+			name: 'automatic-disco-go-interpreter',
+			description: 'Another tree-walking interpreter in Go',
+			language: 'Go',
+			links: [
+				{
+					label: 'GitHub',
+					url: 'https://github.com/tusharhqq/automatic-disco-go-interpreter'
+				}
+			]
 		}
 	];
 
