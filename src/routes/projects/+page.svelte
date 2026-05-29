@@ -31,13 +31,13 @@
 			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/rope-man' }]
 		},
 		{
-			name: 'automatic-disco-go-interpreter',
+			name: 'automatic-disco',
 			description: 'Another tree-walking interpreter in Go',
 			language: 'Go',
 			links: [
 				{
 					label: 'GitHub',
-					url: 'https://github.com/tusharhqq/automatic-disco-go-interpreter'
+					url: 'https://github.com/tusharhqq/automatic-disco'
 				}
 			]
 		},
@@ -58,14 +58,14 @@
 			]
 		},
 		{
-			name: 'rust-market-maker',
+			name: 'dusty',
 			description:
-				'Market-maker simulation using Binance, Jupiter, and Cow price sources with spread and PnL modeling',
+				'Market maker simulation using price sources with spread and PnL modeling',
 			language: 'Rust',
 			links: [
 				{
 					label: 'GitHub',
-					url: 'https://github.com/tusharhqq/rust-market-maker'
+					url: 'https://github.com/tusharhqq/dusty'
 				}
 			]
 		}
