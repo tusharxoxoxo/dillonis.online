@@ -31,6 +31,13 @@
 				return;
 			}
 
+			if (index === projects.length - 1) {
+				document
+					.getElementById('status-line')
+					?.scrollIntoView({ block: 'end' });
+				return;
+			}
+
 			document
 				.getElementById(`project-row-${index}`)
 				?.scrollIntoView({ block: 'nearest' });
@@ -51,7 +58,7 @@
 			name: 'rope-man',
 			description:
 				"Terminal reimplementation of Armin Ronacher's rope-man game, built with OpenTUI",
-			language: 'TypeScript',
+			language: 'TypeScript · Effect',
 			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/rope-man' }]
 		},
 		{
@@ -139,7 +146,7 @@
 </script>
 
 <main
-	class="mx-auto flex w-full max-w-2xl flex-col px-5 py-10 font-mono text-ctp-text sm:px-8 lg:py-14"
+	class="mx-auto flex w-full max-w-2xl flex-col px-5 py-10 pb-16 font-mono text-ctp-text sm:px-8 lg:py-14"
 >
 	<header id="projects-top" class="mb-10 border-b border-ctp-surface0 pb-8">
 		<a
@@ -238,7 +245,7 @@
 		</ul>
 	</section>
 
-	<p class="mt-8 text-xs text-ctp-overlay0">
+	<p id="projects-bottom" class="mt-8 text-xs text-ctp-overlay0">
 		j/k navigate · Enter open link · gg top · G bottom
 	</p>
 </main>
