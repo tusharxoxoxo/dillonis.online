@@ -15,6 +15,15 @@
 
 	let selectedIndex = $state(0);
 
+	$effect(() => {
+		const index = selectedIndex;
+		requestAnimationFrame(() => {
+			document
+				.getElementById(`project-row-${index}`)
+				?.scrollIntoView({ block: 'nearest' });
+		});
+	});
+
 	const projects: Project[] = [
 		{
 			name: 'openchaos',
@@ -152,6 +161,7 @@
 			{#each projects as project, i}
 				{@const isSelected = selectedIndex === i}
 				<div
+					id="project-row-{i}"
 					class="group hover:bg-[#313346] transition-colors px-3 py-3 cursor-pointer {isSelected
 						? 'bg-[#313346]'
 						: ''}"
