@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	// oxlint-disable-next-line eslint/no-unassigned-vars -- bind:this assigns on mount
 	let signColumn: HTMLDivElement;
 	let tildes = $state<string>();
 

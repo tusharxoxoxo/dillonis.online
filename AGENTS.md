@@ -39,7 +39,7 @@ src/
 - **Tabs** (not spaces)
 - **Single quotes**
 - **No trailing commas**
-- Print width: 100
+- Print width: 80 (`.oxfmtrc.json`)
 
 ### Vim Mode System
 
@@ -80,8 +80,9 @@ jj bookmark set    # like git branch
 bun run dev        # Start dev server (Bun adapter)
 bun run build      # Production build (Vercel adapter)
 bun run check      # Type check + svelte-check
-bun run lint       # Prettier check
-bun run format     # Prettier write
+bun run lint       # oxlint + oxfmt check
+bun run lint:fix   # oxlint auto-fix
+bun run format     # oxfmt write
 ```
 
 ## NOTES

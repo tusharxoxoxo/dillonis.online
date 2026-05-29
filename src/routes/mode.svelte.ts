@@ -1,5 +1,3 @@
-import { writable } from 'svelte/store';
-
 export type Mode = 'NORMAL' | 'INSERT' | 'VISUAL';
 
 let mode = $state<Mode>('NORMAL');
