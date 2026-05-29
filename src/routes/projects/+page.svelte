@@ -57,10 +57,7 @@
 					url: 'https://github.com/tusharhqq/dusty'
 				}
 			]
-		}
-	];
-
-	const everythingElse: Project[] = [
+		},
 		{
 			name: 'automatic-disco',
 			description: 'Tree-walking interpreter in Go',
@@ -92,19 +89,17 @@
 		}
 	];
 
-	const allProjects = [...projects, ...everythingElse];
-
 	onMount(() => {
 		function handleKeyDown(event: KeyboardEvent) {
 			if (event.key === 'j') {
 				event.preventDefault();
-				selectedIndex = Math.min(selectedIndex + 1, allProjects.length - 1);
+				selectedIndex = Math.min(selectedIndex + 1, projects.length - 1);
 			} else if (event.key === 'k') {
 				event.preventDefault();
 				selectedIndex = Math.max(selectedIndex - 1, 0);
 			} else if (event.key === 'Enter' || event.key === 'o') {
 				event.preventDefault();
-				const project = allProjects[selectedIndex];
+				const project = projects[selectedIndex];
 				if (!project) return;
 
 				const firstLink = project.links[0];
@@ -113,7 +108,7 @@
 				}
 			} else if (event.key === 'g' && event.shiftKey) {
 				event.preventDefault();
-				selectedIndex = allProjects.length - 1;
+				selectedIndex = projects.length - 1;
 			} else if (event.key === 'g') {
 				const handler = (e: KeyboardEvent) => {
 					if (e.key === 'g') {
@@ -148,7 +143,7 @@
 		</a>
 	</div>
 
-	<!-- Open Source Projects Section -->
+	<!-- Projects -->
 	<div class="flex flex-col gap-4 mb-12">
 		<div class="text-ctp-peach font-bold text-lg mb-2">
 			" === Open Source Projects ===
@@ -174,79 +169,6 @@
 				>
 					<div class="flex flex-row items-start gap-3">
 						<span class="text-ctp-overlay0 shrink-0 select-none">{i + 1}.</span>
-						<div class="flex flex-col gap-1.5 grow min-w-0">
-							<div class="flex flex-row items-baseline gap-2 flex-wrap">
-								<span class="text-ctp-text font-semibold">{project.name}</span>
-								<span
-									class="text-ctp-subtext0 text-sm px-1.5 py-0.5 bg-ctp-surface0 rounded"
-									>{project.language}</span
-								>
-								{#if project.stars}
-									<span class="text-ctp-yellow text-sm flex items-center gap-1">
-										<StarIcon size={12} />
-										{project.stars}
-									</span>
-								{/if}
-							</div>
-							<div class="text-sm text-ctp-subtext1 mt-0.5">
-								{project.description}
-							</div>
-							<div class="flex flex-row gap-2 mt-1.5 text-sm flex-wrap">
-								{#each project.links as link, linkIndex}
-									<a
-										href={link.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="text-ctp-blue hover:text-mode-color hover:underline flex items-center gap-1"
-									>
-										{#if link.label === 'GitHub'}
-											<GithubIcon size={12} />
-										{:else}
-											<ExternalLinkIcon size={12} />
-										{/if}
-										{link.label}
-									</a>
-									{#if linkIndex < project.links.length - 1}
-										<span class="text-ctp-overlay0">|</span>
-									{/if}
-								{/each}
-							</div>
-						</div>
-					</div>
-				</div>
-			{/each}
-		</div>
-	</div>
-
-	<!-- Everything Else Section -->
-	<div class="flex flex-col gap-4 mb-12">
-		<div class="text-ctp-peach font-bold text-lg mb-2">
-			" === Everything Else ===
-		</div>
-		<div class="flex flex-col gap-3">
-			{#each everythingElse as project, i}
-				{@const projectIndex = projects.length + i}
-				{@const isSelected = selectedIndex === projectIndex}
-				<div
-					class="group hover:bg-[#313346] transition-colors px-3 py-3 cursor-pointer {isSelected
-						? 'bg-[#313346]'
-						: ''}"
-					onclick={() => {
-						selectedIndex = projectIndex;
-					}}
-					onkeydown={(event) => {
-						if (event.key === 'Enter' || event.key === ' ') {
-							event.preventDefault();
-							selectedIndex = projectIndex;
-						}
-					}}
-					role="button"
-					tabindex={projectIndex}
-				>
-					<div class="flex flex-row items-start gap-3">
-						<span class="text-ctp-overlay0 shrink-0 select-none"
-							>{projectIndex + 1}.</span
-						>
 						<div class="flex flex-col gap-1.5 grow min-w-0">
 							<div class="flex flex-row items-baseline gap-2 flex-wrap">
 								<span class="text-ctp-text font-semibold">{project.name}</span>
