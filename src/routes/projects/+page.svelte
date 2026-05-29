@@ -17,34 +17,24 @@
 
 	const projects: Project[] = [
 		{
-			name: '6666',
+			name: 'openchaos',
 			description:
-				'A high-performance OLTP database written in OCaml, inspired by TigerBeetle',
-			language: 'OCaml',
-			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/6666' }]
+				'Open-source deterministic simulation and property-based testing - exhaustively explore your system in simulation, inject faults, and get a perfect repro of every failure',
+			language: 'Open Source',
+			links: [
+				{ label: 'GitHub', url: 'https://github.com/tusharhqq/openchaos' }
+			]
 		},
 		{
 			name: 'rope-man',
 			description:
-				"A terminal reimplementation of Armin Ronacher's rope-man game (made with his kids), built with OpenTUI",
+				"Terminal reimplementation of Armin Ronacher's rope-man game, built with OpenTUI",
 			language: 'TypeScript',
 			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/rope-man' }]
 		},
 		{
-			name: 'automatic-disco',
-			description: 'Another tree-walking interpreter in Go',
-			language: 'Go',
-			links: [
-				{
-					label: 'GitHub',
-					url: 'https://github.com/tusharhqq/automatic-disco'
-				}
-			]
-		},
-		{
 			name: '1millionspheres',
-			description:
-				'PBR Three.js visualization rendering 1,000,000 unique spheres with dynamic lighting and selection',
+			description: 'PBR Three.js demo with 1,000,000 unique spheres',
 			language: 'TypeScript',
 			links: [
 				{
@@ -59,8 +49,7 @@
 		},
 		{
 			name: 'dusty',
-			description:
-				'Market maker simulation using price sources with spread and PnL modeling',
+			description: 'Market maker simulation with spread and PnL modeling',
 			language: 'Rust',
 			links: [
 				{
@@ -71,17 +60,51 @@
 		}
 	];
 
+	const everythingElse: Project[] = [
+		{
+			name: 'automatic-disco',
+			description: 'Tree-walking interpreter in Go',
+			language: 'Go',
+			links: [
+				{
+					label: 'GitHub',
+					url: 'https://github.com/tusharhqq/automatic-disco'
+				}
+			]
+		},
+		{
+			name: 'config',
+			description: 'My configuration files and tools',
+			language: 'Lua',
+			links: [
+				{
+					label: 'GitHub',
+					url: 'https://github.com/tusharhqq/config'
+				}
+			]
+		},
+		{
+			name: '6666',
+			description:
+				'High-performance OLTP database in OCaml, inspired by TigerBeetle',
+			language: 'OCaml',
+			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/6666' }]
+		}
+	];
+
+	const allProjects = [...projects, ...everythingElse];
+
 	onMount(() => {
 		function handleKeyDown(event: KeyboardEvent) {
 			if (event.key === 'j') {
 				event.preventDefault();
-				selectedIndex = Math.min(selectedIndex + 1, projects.length - 1);
+				selectedIndex = Math.min(selectedIndex + 1, allProjects.length - 1);
 			} else if (event.key === 'k') {
 				event.preventDefault();
 				selectedIndex = Math.max(selectedIndex - 1, 0);
 			} else if (event.key === 'Enter' || event.key === 'o') {
 				event.preventDefault();
-				const project = projects[selectedIndex];
+				const project = allProjects[selectedIndex];
 				if (!project) return;
 
 				const firstLink = project.links[0];
@@ -90,7 +113,7 @@
 				}
 			} else if (event.key === 'g' && event.shiftKey) {
 				event.preventDefault();
-				selectedIndex = projects.length - 1;
+				selectedIndex = allProjects.length - 1;
 			} else if (event.key === 'g') {
 				const handler = (e: KeyboardEvent) => {
 					if (e.key === 'g') {
@@ -140,11 +163,90 @@
 					onclick={() => {
 						selectedIndex = i;
 					}}
+					onkeydown={(event) => {
+						if (event.key === 'Enter' || event.key === ' ') {
+							event.preventDefault();
+							selectedIndex = i;
+						}
+					}}
 					role="button"
 					tabindex={i}
 				>
 					<div class="flex flex-row items-start gap-3">
 						<span class="text-ctp-overlay0 shrink-0 select-none">{i + 1}.</span>
+						<div class="flex flex-col gap-1.5 grow min-w-0">
+							<div class="flex flex-row items-baseline gap-2 flex-wrap">
+								<span class="text-ctp-text font-semibold">{project.name}</span>
+								<span
+									class="text-ctp-subtext0 text-sm px-1.5 py-0.5 bg-ctp-surface0 rounded"
+									>{project.language}</span
+								>
+								{#if project.stars}
+									<span class="text-ctp-yellow text-sm flex items-center gap-1">
+										<StarIcon size={12} />
+										{project.stars}
+									</span>
+								{/if}
+							</div>
+							<div class="text-sm text-ctp-subtext1 mt-0.5">
+								{project.description}
+							</div>
+							<div class="flex flex-row gap-2 mt-1.5 text-sm flex-wrap">
+								{#each project.links as link, linkIndex}
+									<a
+										href={link.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-ctp-blue hover:text-mode-color hover:underline flex items-center gap-1"
+									>
+										{#if link.label === 'GitHub'}
+											<GithubIcon size={12} />
+										{:else}
+											<ExternalLinkIcon size={12} />
+										{/if}
+										{link.label}
+									</a>
+									{#if linkIndex < project.links.length - 1}
+										<span class="text-ctp-overlay0">|</span>
+									{/if}
+								{/each}
+							</div>
+						</div>
+					</div>
+				</div>
+			{/each}
+		</div>
+	</div>
+
+	<!-- Everything Else Section -->
+	<div class="flex flex-col gap-4 mb-12">
+		<div class="text-ctp-peach font-bold text-lg mb-2">
+			" === Everything Else ===
+		</div>
+		<div class="flex flex-col gap-3">
+			{#each everythingElse as project, i}
+				{@const projectIndex = projects.length + i}
+				{@const isSelected = selectedIndex === projectIndex}
+				<div
+					class="group hover:bg-[#313346] transition-colors px-3 py-3 cursor-pointer {isSelected
+						? 'bg-[#313346]'
+						: ''}"
+					onclick={() => {
+						selectedIndex = projectIndex;
+					}}
+					onkeydown={(event) => {
+						if (event.key === 'Enter' || event.key === ' ') {
+							event.preventDefault();
+							selectedIndex = projectIndex;
+						}
+					}}
+					role="button"
+					tabindex={projectIndex}
+				>
+					<div class="flex flex-row items-start gap-3">
+						<span class="text-ctp-overlay0 shrink-0 select-none"
+							>{projectIndex + 1}.</span
+						>
 						<div class="flex flex-col gap-1.5 grow min-w-0">
 							<div class="flex flex-row items-baseline gap-2 flex-wrap">
 								<span class="text-ctp-text font-semibold">{project.name}</span>
