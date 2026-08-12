@@ -45,7 +45,7 @@
 				'Open-source deterministic simulation and property-based testing — exhaustively explore your system in simulation, inject faults, and get a perfect repro of every failure',
 			language: 'Open Source',
 			links: [
-				{ label: 'GitHub', url: 'https://github.com/tusharhqq/openchaos' }
+				{ label: 'GitHub', url: 'https://github.com/gpu004/openchaos' }
 			]
 		},
 		{
@@ -53,7 +53,7 @@
 			description:
 				"Terminal reimplementation of Armin Ronacher's rope-man game, built with OpenTUI",
 			language: 'TypeScript · Effect',
-			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/rope-man' }]
+			links: [{ label: 'GitHub', url: 'https://github.com/gpu004/rope-man' }]
 		},
 		{
 			name: '1millionspheres',
@@ -62,7 +62,7 @@
 			links: [
 				{
 					label: 'GitHub',
-					url: 'https://github.com/tusharhqq/1millionspheres'
+					url: 'https://github.com/gpu004/1millionspheres'
 				},
 				{
 					label: 'Demo',
@@ -77,7 +77,7 @@
 			links: [
 				{
 					label: 'GitHub',
-					url: 'https://github.com/tusharhqq/dusty'
+					url: 'https://github.com/gpu004/dusty'
 				}
 			]
 		},
@@ -88,7 +88,7 @@
 			links: [
 				{
 					label: 'GitHub',
-					url: 'https://github.com/tusharhqq/automatic-disco'
+					url: 'https://github.com/gpu004/automatic-disco'
 				}
 			]
 		},
@@ -97,7 +97,7 @@
 			description:
 				'High-performance OLTP database in OCaml, inspired by TigerBeetle',
 			language: 'OCaml',
-			links: [{ label: 'GitHub', url: 'https://github.com/tusharhqq/6666' }]
+			links: [{ label: 'GitHub', url: 'https://github.com/gpu004/6666' }]
 		}
 	];
 
